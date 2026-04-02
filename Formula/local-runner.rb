@@ -25,18 +25,13 @@ class LocalRunner < Formula
     end
   end
 
-  service do
-    run [opt_bin/"local-runner-daemon"]
-    keep_alive true
-    restart_delay 10
-    log_path var/"log/local-runner/daemon.stdout.log"
-    error_log_path var/"log/local-runner/daemon.stderr.log"
-    working_dir var/"local-runner"
-  end
-
-  def post_install
-    (var/"log/local-runner").mkpath
-    (var/"local-runner").mkpath
+  def caveats
+    <<~EOS
+      サービスの管理:
+        lr install     # デーモンを LaunchAgent として登録・起動
+        lr uninstall   # LaunchAgent を解除
+        lr doctor      # セットアップの診断
+    EOS
   end
 
   test do

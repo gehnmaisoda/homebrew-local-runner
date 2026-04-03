@@ -1,28 +1,17 @@
 class LocalRunner < Formula
   desc "macOS local job runner with cron scheduling, Web UI, and Slack notifications"
   homepage "https://github.com/gehnmaisoda/local-runner"
-  url "https://github.com/gehnmaisoda/local-runner/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "005c431c24aa256e602017c460df457206960efd18dc6a75b7ff57f38fa4762a"
+  url "https://github.com/gehnmaisoda/local-runner/releases/download/v0.1.0/local-runner-0.1.0-arm64.tar.gz"
+  sha256 "204f58355ed688b968cf7df05cbb43517435ddb7c9a6214d5ff33df52b5eff5c"
+  version "0.1.0"
   license "MIT"
 
   depends_on :macos
-  depends_on xcode: ["15.0", :build]
-  depends_on "bun" => :build
+  depends_on arch: :arm64
 
   def install
-    # Daemon (Swift)
-    cd "daemon" do
-      system "swift", "build", "-c", "release", "--disable-sandbox"
-      bin.install ".build/release/local-runner" => "local-runner-daemon"
-    end
-
-    # CLI (Bun → single binary)
-    cd "cli" do
-      system "bun", "install"
-      system "bun", "build", "--compile", "index.ts", "--outfile", "lr",
-             "--define", "__EMBEDDED_VERSION__=\"#{version}\""
-      bin.install "lr"
-    end
+    bin.install "local-runner-daemon"
+    bin.install "lr"
   end
 
   def caveats

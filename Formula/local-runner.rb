@@ -2,7 +2,7 @@ class LocalRunner < Formula
   desc "macOS local job runner with cron scheduling, Web UI, and Slack notifications"
   homepage "https://github.com/gehnmaisoda/local-runner"
   url "https://github.com/gehnmaisoda/local-runner/releases/download/v0.1.0/local-runner-0.1.0-arm64.tar.gz"
-  sha256 "2451baffd4c4db5dfebcf76749374b610b4f818131387d1e3270d384c2985941"
+  sha256 "2c1bad1a64d30460a9d8d48bc7b5882c38ee1e05f22475b0007d71ce83ee51ce"
   version "0.1.0"
   license "MIT"
 

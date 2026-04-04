@@ -2,7 +2,7 @@ class LocalRunner < Formula
   desc "macOS local job runner with cron scheduling, Web UI, and Slack notifications"
   homepage "https://github.com/gehnmaisoda/local-runner"
   url "https://github.com/gehnmaisoda/local-runner/releases/download/v0.1.0/local-runner-0.1.0-arm64.tar.gz"
-  sha256 "cded82a3ff7e22812bf0b3a740d0d1d25ef342706a4b0e7d2405853918500413"
+  sha256 "23aeb6f3400465608f6231f42810a4103cdda279902383e4ce730a2d636f4896"
   version "0.1.0"
   license "MIT"
 
@@ -10,7 +10,7 @@ class LocalRunner < Formula
   depends_on arch: :arm64
 
   def install
-    bin.install "local-runner-daemon"
+    prefix.install "LocalRunner.app"
     bin.install "lr"
   end
 
